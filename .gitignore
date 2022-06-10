@@ -1,3 +1,4 @@
 .pytest_cache
 pam
 main.
+__pycache__
