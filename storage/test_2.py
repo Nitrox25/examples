@@ -58,28 +58,3 @@ class TestAuthorization():
         self.driver.implicitly_wait(1)
         self.driver.close()
 
-#
-# from selenium import webdriver
-# from selenium.webdriver.common.keys import Keys
-# import time
-#
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument('--no-sandbox')
-# chrome_options.add_argument('--headless')
-# chrome_options.add_argument('--disable-gpu')
-# driver = webdriver.Chrome(chrome_options=chrome_options)
-# driver.implicitly_wait(10)
-#
-# while True:
-#     print('start')
-#     driver.get("http://www.python.org")
-#     assert "Python" in driver.title
-#     elem = driver.find_element(by=By.NAME, value="q")
-#     print('elem', elem)
-#     elem.clear()
-#     elem.send_keys("pycon")
-#     elem.send_keys(Keys.RETURN)
-#     assert "No results found." not in driver.page_source
-#     print('all ok')
-#     time.sleep(3)
-# driver.close()
