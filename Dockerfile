@@ -14,9 +14,10 @@ ENV HOST_NAME localhost
 
 ENTRYPOINT []
 SHELL ["/bin/bash", "-c"]
-CMD pwd ; ls  \
+CMD cd .. \
+    && pwd ; ls  \
     && sleep 60 \
-    && py.test /storage/ ; \
+    && py.test storage ; \
     sleep 3600
 
 #- py.test -n=15  --dist=loadfile  --alluredir=./allure-results-akbars  akbars

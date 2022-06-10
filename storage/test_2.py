@@ -2,6 +2,7 @@
 import pytest
 import time
 from os import environ
+import os
 import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -18,10 +19,10 @@ if HOST_NAME is None:
     HOST_NAME = "localhost"
 
 
+
 class TestAuthorization():
 
     def setup_method(self, method):
-
         self.capabilities = {
             "browserName": "chrome",
             "version": "78.0",
