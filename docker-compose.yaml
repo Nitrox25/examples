@@ -1,0 +1,25 @@
+version: "3.4"
+
+services:
+  selenium:
+    image: selenium/standalone-chrome:4.2.2-20220609
+    ports:
+      - 4444:4444
+    shm_size: '2gb'
+
+  pytest:
+    depends_on:
+      - selenium
+    image: nitrox232020/my_test
+    volumes:
+      - ./Wallet_test/storage:/storage
+    environment:
+      - HOST_NAME=selenium
+
+
+
+
+
+
+
+
