@@ -4,7 +4,6 @@ iCONTAINER ?= front
 iDOCKERFILE = Dockerfile
 
 container:
-	cd ../ && \
 	docker build -f ci/${iDOCKERFILE} -t ${iCONTAINER} . 
 
 release:
