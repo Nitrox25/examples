@@ -8,4 +8,4 @@ container:
 
 release:
 	docker tag ${iCONTAINER} ${oCONTAINER}/${iCONTAINER}:latest && \
-	docker push ${oCONTAINER}/${iCONTAINER}:latest && \
+	docker push ${oCONTAINER}/${iCONTAINER}:latest
