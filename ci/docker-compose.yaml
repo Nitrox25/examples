@@ -1,0 +1,29 @@
+version: "3.4"
+
+services:
+  selenium:
+    container_name: selenium
+    image: selenium/standalone-chrome:4.2.2-20220609
+    ports:
+      - 4444:4444
+    shm_size: '2gb'
+
+  pytest:
+    container_name: pytest
+    depends_on:
+      - selenium
+    image: testgaus/front
+    volumes:
+      - ../src:/storage
+      - ../results:/results
+    environment:
+      - SELNAME=selenium
+      - HOSTNAME=demo.megadex.com
+
+
+
+
+
+
+
+
