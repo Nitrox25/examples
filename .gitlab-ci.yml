@@ -44,9 +44,10 @@ deploy-tests:
     - docker-compose up -d
     - sleep 40
     - pwd
+    - ls -l ../results
   artifacts:
     paths:
-      - front_test.xml
+      - ../results/*.xml
     expire_in: 30 minutes
     reports:
       junit: front_test.xml
