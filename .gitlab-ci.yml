@@ -29,3 +29,19 @@ release-registry:
       if [ $CI_COMMIT_BRANCH == "master" ] ; then
          make --directory=ci/ release ;
       fi  
+
+deploy-tests:
+  stage: tests
+  tags:
+    - blockchain-docker
+  script:
+    - set +x
+    - cd ci/
+    - HOSTNAME=demo-testing.moutai.k8s.clive.tk
+    - docker-compose up -d
+  artifacts:
+    paths:
+      - "../results/front_test.xml"
+    expire_in: 30 minutes
+    reports:
+      junit: ../results/front_test.xml
