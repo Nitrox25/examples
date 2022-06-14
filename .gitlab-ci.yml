@@ -43,11 +43,9 @@ deploy-tests:
     - HOSTNAME=demo-testing.moutai.k8s.clive.tk
     - docker-compose up -d
     - sleep 40
-    - pwd
-    - ls -l ../results
   artifacts:
     paths:
-      - $CI_PROJECT_DIR/results/*.xml
+      - $CI_PROJECT_DIR/results/front_test.xml
     expire_in: 30 minutes
     reports:
-      junit: front_test.xml
+      junit: $CI_PROJECT_DIR/results/front_test.xml
