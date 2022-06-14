@@ -46,7 +46,7 @@ deploy-tests:
     - pwd
   artifacts:
     paths:
-      - "../results/front_test.xml"
+      - front_test.xml
     expire_in: 30 minutes
     reports:
-      junit: ../results/front_test.xml
+      junit: front_test.xml
