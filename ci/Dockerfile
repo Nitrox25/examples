@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 FROM python:3.9.4-alpine
 
 ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV SELNAME ${SELNAME:-localhost}
 ENV SELPORT ${SELPORT:-4444}
 ENV HOSTNAME ${HOSTNAME:-demo.megadex.com}
