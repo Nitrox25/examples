@@ -12,7 +12,7 @@ services:
     container_name: pytest
     depends_on:
       - selenium
-    image: testgaus/front
+    image: registry.i.sumus.work/testgaus/front:latest
     volumes:
       - ../src:/storage
       - ../results:/results
