@@ -40,6 +40,7 @@ deploy-tests:
     - cd ci/
     - HOSTNAME=demo-testing.moutai.k8s.clive.tk
     - docker-compose up -d
+    - sleep 60
   artifacts:
     paths:
       - "../results/front_test.xml"
