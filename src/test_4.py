@@ -10,11 +10,31 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+SELNAME = environ.get('SELNAME')
+if SELNAME is None:
+    SELNAME = "localhost"
+
+SELPORT = environ.get('SELPORT')
+if SELPORT is None:
+    SELPORT = "4444"
+
+HOSTNAME = environ.get('HOSTNAME')
+if HOSTNAME is None:
+    HOSTNAME = "localhost"
+
 
 class TestRestore():
     def setup_method(self, method):
-        self.driver = webdriver.Chrome()
-        self.vars = {}
+        self.capabilities = {
+            "browserName": "chrome",
+            "version": "78.0",
+            "platform": "LINUX"
+        }
+        self.driver = webdriver.Remote(
+            command_executor=f'http://{SELNAME}:{SELPORT}/wd/hub',
+            options=webdriver.ChromeOptions()
+
+        )
 
     def teardown_method(self, method):
         self.driver.quit()
@@ -30,4 +50,3 @@ class TestRestore():
                                  "//div[@id=\'app\']/div[2]/div[2]/div/div/div[2]/label[2]/span[2]/input").click()
         self.driver.find_element(By.CSS_SELECTOR, ".focus > .inputWrapper__input").send_keys("1")
         self.driver.find_element(By.LINK_TEXT, "Restore").click()
-

@@ -1,4 +1,3 @@
-
 import pytest
 import time
 import json
@@ -10,16 +9,36 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+SELNAME = environ.get('SELNAME')
+if SELNAME is None:
+    SELNAME = "localhost"
 
-class TestTest2():
+SELPORT = environ.get('SELPORT')
+if SELPORT is None:
+    SELPORT = "4444"
+
+HOSTNAME = environ.get('HOSTNAME')
+if HOSTNAME is None:
+    HOSTNAME = "localhost"
+
+
+class TestNewWallet():
     def setup_method(self, method):
-        self.driver = webdriver.Chrome()
-        self.vars = {}
+        self.capabilities = {
+            "browserName": "chrome",
+            "version": "78.0",
+            "platform": "LINUX"
+        }
+        self.driver = webdriver.Remote(
+            command_executor=f'http://{SELNAME}:{SELPORT}/wd/hub',
+            options=webdriver.ChromeOptions()
+
+        )
 
     def teardown_method(self, method):
         self.driver.quit()
 
-    def testNewWallet(self):
+    def test_new_wallet(self):
         self.driver.get("https://demo.megadex.com/")
         self.driver.set_window_size(1387, 877)
         self.driver.find_element(By.XPATH, "//section/div/div/div/a").click()
@@ -48,5 +67,3 @@ class TestTest2():
         self.driver.find_element(By.CSS_SELECTOR, ".inputWrapper__input").send_keys("1")
         self.driver.implicitly_wait(1)
         self.driver.find_element(By.LINK_TEXT, "Auth").click()
-
-
