@@ -47,7 +47,7 @@ deploy-tests:
     - ls -l ../results
   artifacts:
     paths:
-      - ../results/*.xml
+      - $CI_PROJECT_DIR/results/*.xml
     expire_in: 30 minutes
     reports:
       junit: front_test.xml

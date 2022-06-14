@@ -22,5 +22,5 @@ SHELL ["/bin/sh", "-c"]
 CMD sleep 10 \
     && py.test storage -p no:cacheprovider --junitxml=../results/front_test.xml \
     && pwd \
-    && chmod 777 results/front_test.xml \
+    && chmod 777 /results/front_test.xml \
     && sleep 3
