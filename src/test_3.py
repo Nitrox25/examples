@@ -40,7 +40,7 @@ class TestNewWallet():
         self.driver.quit()
 
     def test_new_wallet(self):
-        self.driver.get("https://demo.megadex.com/")
+        self.driver.get(f"https://{HOSTNAME}/")
         self.driver.set_window_size(1387, 877)
         self.driver.find_element(By.XPATH, "//section/div/div/div/a").click()
         self.driver.find_element(By.XPATH, "//div[@id=\'app\']/main/div/main/div/div/div/div/button").click()

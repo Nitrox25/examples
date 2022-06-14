@@ -41,7 +41,7 @@ class TestRestore():
         self.driver.quit()
 
     def test_restore(self):
-        self.driver.get("https://demo.megadex.com/")
+        self.driver.get(f"https://{HOSTNAME}/")
         self.driver.set_window_size(1387, 877)
         self.driver.find_element(By.XPATH, "(//a[contains(@href, \'/auth\')])[2]").click()
         self.driver.find_element(By.XPATH, "//div[@id=\'app\']/main/div/main/div/div/div/div[3]/button").click()
