@@ -33,6 +33,8 @@ release-registry:
 
 deploy-tests:
   stage: tests
+  variables:
+    GIT_STRATEGY: none
   tags:
     - blockchain-docker
   script:
