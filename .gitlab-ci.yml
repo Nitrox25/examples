@@ -61,6 +61,8 @@ run-tests:
 
 clean:
   stage: clean
+  tags:
+    - blockchain-docker
   script:
     - rm -rf /tmp/results
     - docker stop selenium
