@@ -17,10 +17,14 @@ ENV HOSTNAME ${HOSTNAME:-demo.megadex.com}
 COPY --from=build /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
+#COPY ./entrypoint.sh /
+
+#ENTRYPOINT [ "/entrypoint.sh" ]
+
 ENTRYPOINT []
 SHELL ["/bin/sh", "-c"]
 CMD sleep 10 \
     && py.test storage -p no:cacheprovider --junitxml=../results/front_test.xml \
-    && pwd \
     && chmod 777 /results/front_test.xml \
+    && ls -l > /results/test.txt \
     && sleep 3
