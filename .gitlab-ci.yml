@@ -42,17 +42,16 @@ run-tests:
     - blockchain-docker
   script:
     - set -x
-    - mkdir -p /tmp/results
-    - touch /tmp/results/$RESULT_NAME.xml
+    - mkdir -p results
+    - touch results/$RESULT_NAME.xml
     - cd ci/
     - docker-compose up -d
     - >
-      while [ -s /tmp/results/$RESULT_NAME.xml ] ; do
+      while [ ! -s ../results/$RESULT_NAME.xml ] ; do
         echo "Tests not passed yet..."
         sleep 5 ;
       done 
-    - ls -l /tmp/results
-    - cp /tmp/results/$RESULT_NAME.xml $CI_PROJECT_DIR/results/$RESULT_NAME.xml
+    - ls -l ../results
   artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
