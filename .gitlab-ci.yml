@@ -51,7 +51,7 @@ run-tests:
         sleep 5 ;
       done 
     - ls -l /tmp/results
-    - cp /tmp/results/$RESULT_NAME.xml $CI_PROJECT_DIR/results/
+    - cp /tmp/results/$RESULT_NAME.xml $CI_PROJECT_DIR/results
   artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
