@@ -1,13 +1,16 @@
 import time
 import pytest
+from os import environ
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 @pytest.mark.usefixtures("setup")
 class Test_GetStarted_MainPage:
+
     def test_GetStarted(self):
         element = self.driver.find_element(By.XPATH, "//section/div/div/div/a")
         assert element.text == "GET STARTED"
@@ -70,11 +73,8 @@ class Test_GetStarted_MainPage:
         # TODO подкладывать файл из шага 5
         WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(
             (By.XPATH, "//div[@id=\'app\']/main/div/main/div/div/section/div[2]/div/div/a"))).click()
-        self.driver.find_element(By.ID, "fileUpload").send_keys("/Users/leokhanin/Downloads/2e26tH2xqA.ctr")
+        self.driver.find_element(By.ID, "fileUpload").send_keys("./storage/wallets/9DDercNf9n.ctr")
         WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(
             (By.CSS_SELECTOR, ".inputWrapper__input"))).send_keys("1")
         self.driver.find_element(By.LINK_TEXT, "Auth").click()
-
-
-
 
