@@ -47,7 +47,7 @@ run-tests:
     - cd ci/
     - docker-compose up -d
     - >
-      while [ ! -f /tmp/results/$RESULT_NAME.xml ] ; do
+      while [ -s /tmp/results/$RESULT_NAME.xml ] ; do
         echo "Tests not passed yet..."
         sleep 5 ;
       done 
@@ -60,11 +60,11 @@ run-tests:
     reports:
       junit: $CI_PROJECT_DIR/results/$RESULT_NAME.xml
 
-clean:
-  stage: clean
-  tags:
-    - blockchain-docker
-  script:
-    - rm -rf /tmp/results
-    - docker stop selenium
-  when: always
+# clean:
+#   stage: clean
+#   tags:
+#     - blockchain-docker
+#   script:
+#     - rm -rf /tmp/results
+#     - docker stop selenium
+#   when: always
