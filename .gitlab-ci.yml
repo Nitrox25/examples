@@ -8,6 +8,7 @@ stages:
   - build
   - release
   - tests
+  - clean
 
 build-container:
   stage: build
@@ -51,10 +52,16 @@ run-tests:
       done 
     - ls -l /tmp/results
     - cp /tmp/results/$RESULT_NAME.xml $CI_PROJECT_DIR/results/
-    - docker stop selenium
   artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
     expire_in: 30 minutes
     reports:
       junit: $CI_PROJECT_DIR/results/$RESULT_NAME.xml
+
+clean:
+  stage: clean
+  script:
+    - rm -rf /tmp/results
+    - docker stop selenium
+  when: always
