@@ -44,7 +44,7 @@ deploy-tests:
     - mkdir -p results
     - cd ci/
     - docker-compose up -d
-    - sleep 40
+    - sleep 120
   artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
