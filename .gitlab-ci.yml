@@ -43,6 +43,7 @@ run-tests:
   script:
     - set -x
     - mkdir -p /tmp/results
+    - touch /tmp/results/$RESULT_NAME.xml
     - cd ci/
     - docker-compose up -d
     - >
@@ -51,7 +52,7 @@ run-tests:
         sleep 5 ;
       done 
     - ls -l /tmp/results
-    - cp /tmp/results/$RESULT_NAME.xml $CI_PROJECT_DIR/results
+    - cp /tmp/results/$RESULT_NAME.xml $CI_PROJECT_DIR/results/$RESULT_NAME.xml
   artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
