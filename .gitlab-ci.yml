@@ -36,7 +36,7 @@ run-tests:
   variables:
     GIT_STRATEGY: none
     HOSTNAME: demo-testing.moutai.k8s.clive.tk
-    RESULT_NAME: front_tests
+    RESULT_NAME: front_test
   tags:
     - blockchain-docker
   script:
@@ -51,6 +51,7 @@ run-tests:
       done 
     - ls -l /tmp/results
     - cp /tmp/results/$RESULT_NAME.xml $CI_PROJECT_DIR/results/
+    - docker stop selenium
   artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
