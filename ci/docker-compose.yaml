@@ -15,7 +15,7 @@ services:
     image: registry.i.sumus.work/testgaus/front:latest
     volumes:
       - ../src:/storage
-      - ../results:/results
+      - /tmp/results:/results
     environment:
       - SELNAME=selenium
       - HOSTNAME=${HOSTNAME}
