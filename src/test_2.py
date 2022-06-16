@@ -52,8 +52,8 @@ class TestAuthorization():
 
         self.driver.find_element(By.CSS_SELECTOR, ".promo__btn").click()
         self.driver.find_element(By.CSS_SELECTOR, ".auth__buttons:nth-child(3) > .auth__btn").click()
-        # self.driver.find_element(By.ID, "fileUpload").send_keys("./storage/wallets/9DDercNf9n.ctr")
-        self.driver.find_element(By.ID, "fileUpload").send_keys("./wallets/9DDercNf9n.ctr")
+        self.driver.find_element(By.ID, "fileUpload").send_keys("./storage/wallets/9DDercNf9n.ctr")
+        # self.driver.find_element(By.ID, "fileUpload").send_keys("./wallets/9DDercNf9n.ctr")
         self.driver.implicitly_wait(1)
         self.driver.find_element(By.CSS_SELECTOR, ".inputWrapper__input").send_keys("1")
         self.driver.find_element(By.LINK_TEXT, "Auth").click()
