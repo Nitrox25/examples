@@ -16,12 +16,13 @@ def setup(request):
     HOSTNAME = environ.get('HOSTNAME')
     if HOSTNAME is None:
         HOSTNAME = "localhost"
+
     driver = webdriver.Remote(
         command_executor=f'http://{SELNAME}:{SELPORT}/wd/hub',
         desired_capabilities=DesiredCapabilities.CHROME,
         # options=webdriver.ChromeOptions()
     )
-    driver.get(f"https://demo.megadex.com/")
+    driver.get(f"{HOSTNAME}")
     driver.maximize_window()
     request.cls.driver = driver
     yield driver
