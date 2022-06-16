@@ -41,7 +41,7 @@ deploy-tests:
     - blockchain-docker
   script:
     - set -x
-    - mkdir results
+    - mkdir -p results
     - cd ci/
     - docker-compose up -d
     - sleep 40
