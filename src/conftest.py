@@ -22,7 +22,7 @@ def setup(request):
         desired_capabilities=DesiredCapabilities.CHROME,
         # options=webdriver.ChromeOptions()
     )
-    driver.get(f"{HOSTNAME}")
+    driver.get(f"https://demo.megadex.com/")
     driver.maximize_window()
     request.cls.driver = driver
     yield driver
