@@ -23,7 +23,7 @@ def setup(request):
 
         options=webdriver.ChromeOptions()
     )
-    chrome_driver.get(f"https://demo.megadex.com/")
+    chrome_driver.get(f"{HOSTNAME}")
     request.cls.driver = chrome_driver
     yield
     chrome_driver.quit()
