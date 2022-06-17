@@ -1,5 +1,6 @@
 import time
 import pytest
+import allure
 from os import environ
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -12,10 +13,11 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class Test_GetStarted_MainPage:
 
     def test_GetStarted(self):
-        element = self.driver.find_element(By.XPATH, "//section/div/div/div/a")
-        assert element.text == "GET STARTED"
-        WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(
-            (By.XPATH, "//section/div/div/div/a"))).click()
+        with allure.step("Нажатие кнопки GetStarted"):
+            element = self.driver.find_element(By.XPATH, "//section/div/div/div/a")
+            assert element.text == "GET STARTED"
+            WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(
+                (By.XPATH, "//section/div/div/div/a"))).click()
 
     def test_NewWallet(self):
         element = self.driver.find_element(By.XPATH, "//div[@id=\'app\']/main/div/main/div/div/div/div/button")
@@ -95,11 +97,12 @@ class Test_GetStarted_MainPage:
 @pytest.mark.usefixtures("setup")
 class Test_restore:
     def test_GetStarted_button(self):
-        time.sleep(2)
-        element = self.driver.find_element(By.XPATH, "//section/div/div/div/a")
-        assert element.text == "GET STARTED"
-        WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(
-            (By.XPATH, "//section/div/div/div/a"))).click()
+        with allure.step("Нажатие кнопки GetStarted"):
+            time.sleep(2)
+            element = self.driver.find_element(By.XPATH, "//section/div/div/div/a")
+            assert element.text == "GET STARTED"
+            WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(
+                (By.XPATH, "//section/div/div/div/a"))).click()
 
     def test_Restore_button(self):
         element = self.driver.find_element(By.XPATH, "//div[@id=\'app\']/main/div/main/div/div/div/div[3]/button")
