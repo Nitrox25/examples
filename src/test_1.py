@@ -10,7 +10,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 @pytest.mark.usefixtures("setup")
-class Test_GetStarted_MainPage:
+class TestNewWallet:
 
     def test_GetStarted(self):
         element = self.driver.find_element(By.XPATH, "//section/div/div/div/a")
