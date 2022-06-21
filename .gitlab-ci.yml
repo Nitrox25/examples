@@ -52,13 +52,6 @@ run-tests:
         echo "Tests not passed yet..."
         sleep 5 ;
       done
-    - >
-      while [ ! -s ../results_allure/*.json ] ; do
-        echo "Tests not passed yet..."
-        sleep 5 ;
-      done
-    - ls -l ../results_allure
-  artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
     expire_in: 30 minutes
@@ -71,6 +64,5 @@ clean:
     - blockchain-docker
   script:
     - test ! -d || rm -rf results/
-    - test ! -d || rm -rf results_allure/
     - docker stop selenium
   when: always

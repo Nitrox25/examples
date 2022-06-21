@@ -1,7 +1,7 @@
 import os, requests, json, base64
-# TODO запилить одну папку  results со junit и  allure
+# TODO запилить одну папку  results
 # This directory is where you have all your results locally, generally named as `allure-results`
-allure_results_directory = '../results_allure'
+allure_results_directory = '/results_allure'
 # This url is where the Allure container is deployed. We are using localhost as example
 allure_server = 'https://allure.i.clive.tk/api'
 # Project ID according to existent projects in your Allure container - Check endpoint for project creation >> `[POST]/projects`
