@@ -51,8 +51,13 @@ run-tests:
       while [ ! -s ../results/$RESULT_NAME.xml ] ; do
         echo "Tests not passed yet..."
         sleep 5 ;
-      done 
-    - ls -l ../results
+      done
+    - >
+      while [ ! -s ../results_allure/*.json ] ; do
+        echo "Tests not passed yet..."
+        sleep 5 ;
+      done
+    - ls -l ../results_allure
   artifacts:
     paths:
       - $CI_PROJECT_DIR/results/$RESULT_NAME.xml
