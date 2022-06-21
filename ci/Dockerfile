@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV SELNAME ${SELNAME:-localhost}
 ENV SELPORT ${SELPORT:-4444}
-ENV HOSTNAME ${HOSTNAME:-demo.megadex.com}
+ENV HOSTNAME ${HOSTNAME:-https://demo.megadex.com/}
 
 COPY --from=build /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
