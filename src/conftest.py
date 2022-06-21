@@ -5,7 +5,7 @@ from os import environ
 
 @pytest.fixture(scope="class")
 def setup(request):
-    print("initiating chrome driver")
+    print("initiating chrome driver1")
 
     SELNAME = environ.get('SELNAME')
     if SELNAME is None:
@@ -23,7 +23,7 @@ def setup(request):
 
         options=webdriver.ChromeOptions()
     )
-    chrome_driver.get(f"https://demo.megadex.com/")
+    chrome_driver.get(f"{HOSTNAME}")
     request.cls.driver = chrome_driver
     yield
     chrome_driver.quit()
