@@ -25,7 +25,7 @@ ENTRYPOINT []
 SHELL ["/bin/sh", "-c"]
 CMD sleep 10 \
     && py.test -v -s storage -p no:cacheprovider --junitxml=../results/front_test.xml  --alluredir=../results_allure \
-    && sleep 15
+    && sleep 15 \
     && python3 GetTestData.py \
     && chmod 777 /results/front_test.xml \
     && ls -l > /results/test.txt \
