@@ -43,6 +43,7 @@ run-tests:
   script:
     - set -x
     - test -d results/ || mkdir -p results
+    - test -d results_allure/ || mkdir -p results_allure
     - touch results/$RESULT_NAME.xml
     - cd ci/
     - docker-compose up -d
@@ -65,5 +66,6 @@ clean:
     - blockchain-docker
   script:
     - test ! -d || rm -rf results/
+    - test ! -d || rm -rf results_allure/
     - docker stop selenium
   when: always

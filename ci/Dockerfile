@@ -24,7 +24,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 ENTRYPOINT []
 SHELL ["/bin/sh", "-c"]
 CMD sleep 10 \
-    && py.test -v -s storage -p no:cacheprovider --junitxml=../results/front_test.xml \
+    && py.test -v -s storage -p no:cacheprovider --junitxml=../results/front_test.xml  --alluredir=results_allure \
+    && python3 GetTestData.py
     && chmod 777 /results/front_test.xml \
     && ls -l > /results/test.txt \
     && sleep 3
