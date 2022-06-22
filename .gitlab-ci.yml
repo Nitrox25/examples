@@ -20,7 +20,8 @@ build-container:
          make --directory=ci/ container  ;
       fi 
   except:
-    - triggers
+    variables:
+      - $ONLY_TESTS == "true"
 
 release-registry:
   stage: release
@@ -34,7 +35,8 @@ release-registry:
          make --directory=ci/ release ;
       fi  
   except:
-    - triggers
+    variables:
+      - $ONLY_TESTS == "true"
 
 run-tests:
   stage: tests
