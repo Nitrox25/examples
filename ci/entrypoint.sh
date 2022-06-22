@@ -20,3 +20,4 @@ do
 done
 
 py.test storage -p no:cacheprovider --junitxml=../results/$RESULT_NAME.xml --alluredir=results_allure $@
+python3 GetTestData.py
