@@ -70,6 +70,7 @@ clean:
   tags:
     - blockchain-docker
   script:
-    - test ! -d || rm -rf results/
+    - test ! -d results/ || rm -rf results/
+    - test ! -d src/results_allure || sudo -rf src/results_allure
     - docker stop selenium
   when: always
