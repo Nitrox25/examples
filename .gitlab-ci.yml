@@ -69,6 +69,8 @@ clean:
   stage: clean
   tags:
     - blockchain-docker
+  variables: 
+    GIT_STRATEGY: none
   script:
     - test ! -d results/ || rm -rf results/
     - test ! -d src/results_allure || sudo -rf src/results_allure
