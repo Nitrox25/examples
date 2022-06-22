@@ -19,5 +19,5 @@ do
     fi
 done
 
-py.test storage -p no:cacheprovider --junitxml=../results/$RESULT_NAME.xml --alluredir=storage/results_allure $@
+py.test storage  -v -s -p no:cacheprovider --junitxml=../results/$RESULT_NAME.xml --alluredir=storage/results_allure $@
 python3 storage/GetTestData.py
