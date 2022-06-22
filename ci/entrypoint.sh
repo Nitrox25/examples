@@ -20,5 +20,4 @@ do
 done
 
 py.test storage -p no:cacheprovider --junitxml=../results/$RESULT_NAME.xml --alluredir=storage/results_allure $@
-python3 storage/GetTestData.py || sleep 300
-sleep 500
+python3 storage/GetTestData.py

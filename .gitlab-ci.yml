@@ -45,7 +45,6 @@ run-tests:
   tags:
     - blockchain-docker
   script:
-    - set -x
     - test -d results/ || mkdir -p results
     - touch results/$RESULT_NAME.xml
     - cd ci/
