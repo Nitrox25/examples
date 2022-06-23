@@ -9,13 +9,17 @@ if SELPORT is None:
     SELPORT = "4444"
 HOSTNAME = environ.get('HOSTNAME')
 if HOSTNAME is None:
-    HOSTNAME = "localhost"
+    HOSTNAME = "dev.megadex.clive.tk"
 print(SELNAME, SELPORT, HOSTNAME)
 
 print("------------------Create a new project------------------")
+
+new_HOSTNAME = HOSTNAME.replace('.', '-')
+
+
 url = "https://allure.i.clive.tk/api/allure-docker-service/projects"
 payload = json.dumps({
-    "id": f"{HOSTNAME}"
+    "id": f"{new_HOSTNAME}"
 })
 headers = {
     'accept': '*/*',
