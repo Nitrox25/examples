@@ -47,6 +47,7 @@ run-tests:
   script:
     - test -d results/ || mkdir -p results
     - touch results/$RESULT_NAME.xml
+    - echo $HOSTNAME
     - cd ci/
     - docker-compose up -d
     - >
