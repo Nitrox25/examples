@@ -1,12 +1,25 @@
 import os, requests, json, base64
 from os import environ
+
+SELNAME = environ.get('SELNAME')
+if SELNAME is None:
+    SELNAME = "localhost"
+SELPORT = environ.get('SELPORT')
+if SELPORT is None:
+    SELPORT = "4444"
+HOSTNAME = environ.get('HOSTNAME')
+if HOSTNAME is None:
+    HOSTNAME = "dev.megadex.clive.tk"
+print(SELNAME, SELPORT, HOSTNAME)
+new_HOSTNAME = HOSTNAME.replace('.', '-')
+
 # TODO запилить одну папку  results
 # This directory is where you have all your results locally, generally named as `allure-results`
 allure_results_directory = '/results_allure'
 # This url is where the Allure container is deployed. We are using localhost as example
 allure_server = 'https://allure.i.clive.tk/api'
 # Project ID according to existent projects in your Allure container - Check endpoint for project creation >> `[POST]/projects`
-project_id = 'wallettest'
+project_id = f'{new_HOSTNAME}'
 # project_id = 'my-project-id'
 # Set security_user & security_password according to Allure container configuration
 
