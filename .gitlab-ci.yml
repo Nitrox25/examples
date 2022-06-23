@@ -61,6 +61,7 @@ run-tests:
     expire_in: 30 minutes
     reports:
       junit: $CI_PROJECT_DIR/results/$RESULT_NAME.xml
+  timeout: 5 minutes
 
 clean:
   stage: clean
