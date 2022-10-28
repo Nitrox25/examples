@@ -9,19 +9,12 @@ if SELPORT is None:
     SELPORT = "4444"
 HOSTNAME = environ.get('HOSTNAME')
 if HOSTNAME is None:
-    HOSTNAME = "dev.megadex.clive.tk"
+    HOSTNAME = "localhost"
 print(SELNAME, SELPORT, HOSTNAME)
-new_HOSTNAME = HOSTNAME.replace('.', '-')
 
-# TODO запилить одну папку  results
-# This directory is where you have all your results locally, generally named as `allure-results`
 allure_results_directory = '/results_allure'
-# This url is where the Allure container is deployed. We are using localhost as example
 allure_server = 'https://allure.i.clive.tk/api'
-# Project ID according to existent projects in your Allure container - Check endpoint for project creation >> `[POST]/projects`
-project_id = f'{new_HOSTNAME}'
-# project_id = 'my-project-id'
-# Set security_user & security_password according to Allure container configuration
+project_id = 'wallettest'
 
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
@@ -75,28 +68,17 @@ json_response_body = json.loads(response.content)
 json_prettier_response_body = json.dumps(json_response_body, indent=4, sort_keys=True)
 print(json_prettier_response_body)
 
-# print("------------------GENERATE-REPORT------------------")
-#
-# SELNAME = environ.get('SELNAME')
-# if SELNAME is None:
-#     SELNAME = "localhost"
-# SELPORT = environ.get('SELPORT')
-# if SELPORT is None:
-#     SELPORT = "4444"
-# HOSTNAME = environ.get('HOSTNAME')
-# if HOSTNAME is None:
-#     HOSTNAME = "localhost"
-# print(SELNAME, SELPORT, HOSTNAME)
-#
-# execution_name = 'execution from my script'
-# execution_from = f'{HOSTNAME}'
-# execution_type = f'Front_tests'
-# response = session.get (allure_server + '/allure-docker-service/generate-report?project_id=' + project_id + '&execution_name=' + execution_name + '&execution_from=' + execution_from + '&execution_type=' + execution_type, headers=headers, verify=ssl_verification)
-# print("STATUS CODE:")
-# print(response.status_code)
-# print("RESPONSE:")
-# json_response_body = json.loads(response.content)
-# json_prettier_response_body = json.dumps(json_response_body, indent=4, sort_keys=True)
-# print(json_prettier_response_body)
-# print('ALLURE REPORT URL:')
-# print(json_response_body['data']['report_url'])
+print("------------------GENERATE-REPORT------------------")
+execution_name = 'execution from my script'
+execution_from = f'{HOSTNAME}'
+execution_type = 'teamcity'
+response = session.get(allure_server + '/allure-docker-service/generate-report?project_id=' + project_id + '&execution_name=' + execution_name + '&execution_from=' + execution_from + '&execution_type=' + execution_type, headers=headers, verify=False)
+
+print("STATUS CODE:")
+print(response.status_code)
+print("RESPONSE:")
+json_response_body = json.loads(response.content)
+json_prettier_response_body = json.dumps(json_response_body, indent=4, sort_keys=True)
+print(json_prettier_response_body)
+print('ALLURE REPORT URL:')
+print(json_response_body['data']['report_url'])
